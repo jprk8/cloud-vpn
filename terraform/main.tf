@@ -46,6 +46,7 @@ module "ec2" {
   vpc_id               = module.vpc.vpc_id
   key_name             = aws_key_pair.ec2_key.key_name
   iam_instance_profile = module.iam.instance_profile_name
+  s3_bucket_name       = module.s3.bucket_name
 }
 
 module "s3" {

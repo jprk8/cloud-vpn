@@ -23,3 +23,8 @@ variable "iam_instance_profile" {
   type = string
   description = "IAM instance profile to attach to EC2"
 }
+
+variable "s3_bucket_name" {
+  type = string
+  description = "Name of S3 bucket to upload client config"
+}

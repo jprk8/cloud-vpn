@@ -38,7 +38,9 @@ resource "aws_instance" "ec2" {
   subnet_id              = var.subnet_id
   vpc_security_group_ids = [aws_security_group.vpn_sg.id]
   key_name               = var.key_name
-  user_data              = file("${path.module}/user-data.sh")
+  user_data              = templatefile("${path.module}/user-data.sh", {
+    S3_BUCKET = var.s3_bucket_name
+  })
   iam_instance_profile   = var.iam_instance_profile
 
   tags = {
