@@ -9,3 +9,7 @@ output "vpn_public_ip" {
 output "vpn_ssh_command" {
   value = "ssh -i ${local_file.private_key_pem.filename} ubuntu@${module.ec2.public_ip}"
 }
+
+output "s3_bucket_name" {
+  value = module.s3.bucket_name
+}
