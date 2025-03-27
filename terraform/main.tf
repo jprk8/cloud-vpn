@@ -39,15 +39,22 @@ module "vpc" {
 }
 
 module "ec2" {
-  source       = "./modules/ec2"
-  project_name = var.project_name
-  ami_id       = var.ami_id
-  subnet_id    = module.vpc.subnet_id
-  vpc_id       = module.vpc.vpc_id
-  key_name     = aws_key_pair.ec2_key.key_name
+  source               = "./modules/ec2"
+  project_name         = var.project_name
+  ami_id               = var.ami_id
+  subnet_id            = module.vpc.subnet_id
+  vpc_id               = module.vpc.vpc_id
+  key_name             = aws_key_pair.ec2_key.key_name
+  iam_instance_profile = module.iam.instance_profile_name
 }
 
 module "s3" {
-  source = "./modules/s3"
+  source       = "./modules/s3"
   project_name = var.project_name
+}
+
+module "iam" {
+  source         = "./modules/iam"
+  project_name   = var.project_name
+  s3_bucket_name = module.s3.bucket_name
 }

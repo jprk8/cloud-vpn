@@ -18,3 +18,8 @@ variable "key_name" {
   type        = string
   description = "EC2 key pair name (generated in root)"
 }
+
+variable "iam_instance_profile" {
+  type = string
+  description = "IAM instance profile to attach to EC2"
+}

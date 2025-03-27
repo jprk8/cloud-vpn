@@ -39,6 +39,7 @@ resource "aws_instance" "ec2" {
   vpc_security_group_ids = [aws_security_group.vpn_sg.id]
   key_name               = var.key_name
   user_data              = file("${path.module}/user-data.sh")
+  iam_instance_profile   = var.iam_instance_profile
 
   tags = {
     Name    = "${var.project_name}-vpn-ec2"
