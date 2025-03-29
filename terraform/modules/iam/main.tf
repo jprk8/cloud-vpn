@@ -27,7 +27,7 @@ resource "aws_iam_role_policy" "s3_upload_policy" {
     Statement = [{
       Effect = "Allow"
       Action = [
-        "s3.PutObject"
+        "s3:PutObject"
       ]
       Resource = "arn:aws:s3:::${var.s3_bucket_name}/*"
     }]

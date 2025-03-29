@@ -42,6 +42,7 @@ resource "aws_instance" "ec2" {
     S3_BUCKET = var.s3_bucket_name
   })
   iam_instance_profile   = var.iam_instance_profile
+  associate_public_ip_address = true
 
   tags = {
     Name    = "${var.project_name}-vpn-ec2"

@@ -21,6 +21,11 @@ resource "tls_private_key" "ec2_key" {
 resource "aws_key_pair" "ec2_key" {
   key_name   = "${var.project_name}-key"
   public_key = tls_private_key.ec2_key.public_key_openssh
+
+  tags = {
+    Name = "${var.project_name}-key"
+    Project = var.project_name
+  }
 }
 
 resource "local_file" "private_key_pem" {
@@ -30,6 +35,7 @@ resource "local_file" "private_key_pem" {
   directory_permission = "0700"
 }
 
+# Pass variables to modules
 module "vpc" {
   source             = "./modules/vpc"
   project_name       = var.project_name
