@@ -45,8 +45,8 @@ PrivateKey = $SERVER_PRIV_KEY
 Address = 10.100.0.1/24
 ListenPort = 51820
 SaveConfig = true
-PostUp = iptables -t nat -A POSTROUTING -o $${INTERFACE} -j MASQUERADE
-PostDown = iptables -t nat -D POSTROUTING -o $${INTERFACE} -j MASQUERADE
+PostUp = iptables -t nat -A POSTROUTING -o $INTERFACE -j MASQUERADE
+PostDown = iptables -t nat -D POSTROUTING -o $INTERFACE -j MASQUERADE
 
 [Peer]
 PublicKey = $CLIENT_PUB_KEY
