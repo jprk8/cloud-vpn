@@ -47,7 +47,6 @@ Edit terraform.tfvars to fit your needs. Key variables include:
 
 ### Initialize and Deploy with Terraform
 ```bash
-terraform
 terraform init
 terraform plan
 terraform apply
